@@ -3,13 +3,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const msg = document.querySelector('.msg'),
         num = document.querySelector('.num'),
         guess = document.querySelector('.guess');
-    let score = document.querySelector('score');
-
-
-    const min = 0;
-    const max = 20;
-    window.handlerCheck = () => {
-        let numScore = Number(score.textContent);
+        const score = document.querySelector('.score');
+        
+        
+        const min = 0;
+        const max = 20;
+        window.handlerCheck = () => {
+        const numScore = score.value;
         let valueInputGuess = guess.value;
         const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         num.innerHTML = randomNumber;
@@ -19,20 +19,21 @@ document.addEventListener('DOMContentLoaded', function() {
             valueInputGuess = Number(valueInputGuess);
             if (valueInputGuess === randomNumber) {
                 game.style.background = '#14ff27';
-                score.textContent = Number(score.textContent) + 1;
+                score.value += 1;
             } else {
                 game.style.background = '#fd0000';
                 if (numScore == 0) {
-                    score.textContent = '00';
+                    score.value == 0;
                 } else {
-                    score.textContent = Number(score.textContent) - 1;
+                    score.value -= 1;
                 }
             }
         }
     }
+
     window.handlerRestore = () => {
-        score = 0;
-        scoreElement.textContent = score;
+        score.value = 0;
+        num.innerHTML = 0;
         game.style.background = '#222';
         guess.value = "";
     }
